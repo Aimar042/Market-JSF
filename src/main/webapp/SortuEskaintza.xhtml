@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="jakarta.faces.html"
+	xmlns:f="jakarta.faces.core" xmlns:p="primefaces" xmlns:ui="jakarta.faces.facelets">
+<f:view>
+	<h:head>
+		<title>Sortu eskaintza</title>
+		<h:outputStylesheet library="css" name="style.css" />
+	</h:head>
+	<h:body>
+		<h:form styleClass="formularioa"> 
+			<div class="eremuak-ezker">
+				<div class="eremua">
+					<p:outputLabel for="tituloa" value="Tituloa: "/>
+					<p:inputText id="tituloa" />
+				</div>
+				
+				<div class="eremua">
+					<p:outputLabel for="deskripzioa" value="Deskripzioa: "/>
+					<p:inputTextarea id="deskripzioa" />
+				</div>
+				
+				<div class="eremua">
+					<p:outputLabel for="prezioa" value="Prezioa: "/>
+					<p:inputText id="prezioa" />
+				</div>
+			</div>
+		</h:form>
+	</h:body>
+</f:view>
+</html>

@@ -1,0 +1,15 @@
+# Carpetas compiladas (Maven / Gradle / IDE)
+target/
+build/
+bin/
+out/
+
+# Archivos de Eclipse
+.classpath
+.project
+.settings/
+.metadata/
+
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db
