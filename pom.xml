@@ -4,10 +4,10 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.is2.frameworks</groupId>
-	<artifactId>login-jsf</artifactId>
+	<artifactId>market-jsf</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
-	<name>LoginJSF</name>
+	<name>MarketJSF</name>
 	<!--Beheko bertsioak batera lan egiten dute.
 		Tomcat-eko bertsioa aldatzen bada, orduan dependentzi guztiak aldatu
 		beharko dira.
@@ -36,7 +36,7 @@
 		</dependencies>
 	</dependencyManagement>
 	<dependencies>
-	
+
 		<!--Jakarta Faces (JSF) – Mojarra inplementazioa.
 			Tomcat-ek ez du JSFa ekartzen, WAR-ren sartu behar da
 		-->
@@ -76,13 +76,19 @@ Faces 4.0-ekin CDI-a beharrezkoa da.
 			<artifactId>junit-jupiter</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.primefaces</groupId>
+			<artifactId>primefaces</artifactId>
+			<version>14.0.0</version>
+			<classifier>jakarta</classifier>
+		</dependency>
 	</dependencies>
 	<build>
 		<!-- Izena ezartzen ez bada WAR fitxategia
 			login-jsf-0.0.1-SNAPSHOT.war izango litzateke
 			Horrela URLa hau izango da: http://localhost:8080/LoginJSF
 		-->
-		<finalName>LoginJSF</finalName>
+		<finalName>MarketJSF</finalName>
 		<plugins>
 			<!--plugin bakoitzaren bertsioa finkatu behar da. Bestela Maven-
 				ek erabakiko du eta kode desberdina lor daiteke makina edo momenu

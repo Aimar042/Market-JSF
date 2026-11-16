@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="jakarta.faces.html"
-	xmlns:f="jakarta.faces.core" xmlns:p="primefaces" xmlns:ui="jakarta.faces.facelets">
+	xmlns:f="jakarta.faces.core" xmlns:p="http://primefaces.org/ui" xmlns:ui="jakarta.faces.facelets">
 <f:view>
 	<h:head>
 		<title>Sortu eskaintza</title>
@@ -9,6 +9,7 @@
 	<h:body>
 		<h:form styleClass="formularioa"> 
 			<div class="eremuak-ezker">
+				<h1>Sortu eskaintza bat</h1>
 				<div class="eremua">
 					<p:outputLabel for="tituloa" value="Tituloa: "/>
 					<p:inputText id="tituloa" />
@@ -23,7 +24,30 @@
 					<p:outputLabel for="prezioa" value="Prezioa: "/>
 					<p:inputText id="prezioa" />
 				</div>
+				
+				<div class="eremua">
+					<p:outputLabel for="egoera" value="Egoera: " />
+					<p:selectOneMenu id="egoera" value="#{sortu.egoera}" >
+						<f:selectItem itemLabel="Berria" itemValue="BERRIA"/>
+						<f:selectItem itemLabel="Erabilia" itemValue="ERABILIA"/>
+						<f:selectItem itemLabel="Txarra" itemValue="TXARRA"/> 
+					</p:selectOneMenu>
+				</div>
+				
+				<div class="eremua">
+					<p:fileUpload mode="advanced" auto="true" stuleClass="igo-botoia" label="Argazkia aukeratu" listener="#{sortu.handleFileUpload}" update="irudia"/>
+				</div>
 			</div>
+			<div class="eremuak-eskuin">
+				<div class="eremua">
+					<p:datePicker value="#{sortu.data}" inline="true"/>
+				</div>
+				
+				<h:panelGroup id="irudia" styleClass="irudia" layout="block">
+					<img src="#{sortu.file64}" width="300" alt="Irudi aurreikuspena, aukeratu bat mesedez" />
+				</h:panelGroup>
+			</div>
+			<h:messages id="mezuak" style="color:red" />
 		</h:form>
 	</h:body>
 </f:view>
