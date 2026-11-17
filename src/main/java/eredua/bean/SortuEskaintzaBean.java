@@ -8,6 +8,11 @@ import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.file.UploadedFile;
 
 import businessLogic.BLFacade;
+import exceptions.MustBeLaterThanTodayException;
+import exceptions.ParamNullException;
+import exceptions.SaleAlreadyExistException;
+import jakarta.faces.application.FacesMessage;
+import jakarta.faces.context.FacesContext;
 import jakarta.faces.view.ViewScoped;
 import jakarta.inject.Named;
 
@@ -21,6 +26,43 @@ public class SortuEskaintzaBean implements Serializable{
 	private File targetFile;
 	private String file64;
 	private Date data;
+	private String tituloa;
+	private String deskripzioa;
+	private Float prezioa;
+	
+	
+	public void sortuEskaintza() {
+		int status = 0;;
+		switch (egoera) {
+		case "BERRIA":
+			status = 0;
+			break;
+			
+		case "ERABILIA":
+			status = 1;
+			break;
+			
+		case "TXARRA":
+			status = 2;
+		}
+		
+		try {
+			facadeBL.createSale(tituloa, deskripzioa, status, prezioa, data, "seller1@gmail.com", targetFile);
+			FacesContext context = FacesContext.getCurrentInstance();
+			context.getExternalContext().getFlash().setKeepMessages(true);
+			context.addMessage(null, new FacesMessage("Eskaintza ondo sortu da!"));
+						
+		} catch (ParamNullException e) {
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_ERROR, "Balioak ezin dira hutsak izan, idatzi balio guztiak mesedez", null));
+		} catch (MustBeLaterThanTodayException e) {
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_ERROR, "Data gaur edo beranduago izan behar du", null));
+		} catch (SaleAlreadyExistException e) {
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_ERROR,"Eskaintza jadanik sortua dago",null));
+		}
+	}
 	
 	public void kargatuIrudia() {
 		targetFile = null;
@@ -73,4 +115,27 @@ public class SortuEskaintzaBean implements Serializable{
 		return this.file64;
 	}
 	
+	public String getTituloa() {
+		return this.tituloa;
+	}
+	
+	public void setTituloa(String tituloa) {
+		this.tituloa = tituloa;
+	}
+
+	public String getDeskripzioa() {
+		return deskripzioa;
+	}
+
+	public void setDeskripzioa(String deskripzioa) {
+		this.deskripzioa = deskripzioa;
+	}
+
+	public Float getPrezioa() {
+		return prezioa;
+	}
+
+	public void setPrezioa(Float prezioa) {
+		this.prezioa = prezioa;
+	}
 }

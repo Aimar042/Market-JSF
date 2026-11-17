@@ -7,23 +7,39 @@
 		<h:outputStylesheet library="css" name="style.css" />
 	</h:head>
 	<h:body>
-		<h:form styleClass="formularioa"> 
+		<h:form styleClass="sortu-formularioa"> 
 			<div class="eremuak-ezker">
 				<h1>Sortu eskaintza bat</h1>
 				<div class="eremua">
 					<p:outputLabel for="tituloa" value="Tituloa: "/>
-					<p:inputText id="tituloa" />
+					<p:inputText id="tituloa" 
+								 required="true"
+								 requiredMessage="Eskaintzak titulu bat eduki behar du" 
+								 value="#{sortu.tituloa}"
+					/>
 				</div>
 				
 				<div class="eremua">
 					<p:outputLabel for="deskripzioa" value="Deskripzioa: "/>
-					<p:inputTextarea id="deskripzioa" />
+					<p:inputTextarea id="deskripzioa" 
+									 required="true"
+								 	 requiredMessage="Eskaintzak deskripzio bat eduki behar du" 
+									 value="#{sortu.deskripzioa}"
+					/>
 				</div>
 				
 				<div class="eremua">
 					<p:outputLabel for="prezioa" value="Prezioa: "/>
-					<p:inputText id="prezioa" />
+					<p:inputText id="prezioa" 
+								 required="true"
+								 converterMessage="Prezioak zenbaki bat izan behar du" 
+								 validatorMessage="Prezioak 0 baino handiagoa izan behar du"
+								 requiredMessage="Eskaintzak prezio bat eduki behar du" 
+								 value="#{sortu.prezioa}">
+						<f:validateDoubleRange minimum="0.01"/>
+					</p:inputText>
 				</div>
+				
 				
 				<div class="eremua">
 					<p:outputLabel for="egoera" value="Egoera: " />
@@ -35,19 +51,37 @@
 				</div>
 				
 				<div class="eremua">
-					<p:fileUpload mode="advanced" auto="true" stuleClass="igo-botoia" label="Argazkia aukeratu" listener="#{sortu.handleFileUpload}" update="irudia"/>
+					<p:fileUpload mode="advanced" 
+								  auto="true" 
+								  styleClass="igo-botoia" 
+								  label="Argazkia aukeratu" 
+								  listener="#{sortu.handleFileUpload}" 
+								  update="irudia"
+					/>
+				</div>
+				
+				<div class="eremua botoiak">
+					<p:commandButton id="sortu-botoia" value="Sortu Eskaintza" action="#{sortu.sortuEskaintza}" update="mezuak" process="@this tituloa deskripzioa prezioa egoera data"/>
+					<p:button id="atzera-botoia" value="Atzera joan" outcome="Main"/>
 				</div>
 			</div>
 			<div class="eremuak-eskuin">
-				<div class="eremua">
-					<p:datePicker value="#{sortu.data}" inline="true"/>
+				<div class="eremua eremua-bertikala">
+					<p:outputLabel for="data" value="Argitarapen eguna"/>
+					<p:datePicker id="data" 
+								  value="#{sortu.data}" 
+								  inline="true"
+								  required="true"
+								  requiredMessage="Eskaintzak argitarapen data bat eduki behar du"
+					/>
 				</div>
 				
-				<h:panelGroup id="irudia" styleClass="irudia" layout="block">
-					<img src="#{sortu.file64}" width="300" alt="Irudi aurreikuspena, aukeratu bat mesedez" />
+				<h:panelGroup id="irudia" styleClass="irudia #{not empty sortu.file64 ? 'irudia-kargatuta' : ''}" layout="block">
+					<h:outputText value="Irudi aurreikuspena, aukeratu bat mesedez" rendered="#{empty sortu.file64}" />
+					<img src="#{sortu.file64}"  width="300"/>
 				</h:panelGroup>
 			</div>
-			<h:messages id="mezuak" style="color:red" />
+			<p:messages id="mezuak" styleClass="mezuak"/>
 		</h:form>
 	</h:body>
 </f:view>

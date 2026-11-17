@@ -7,12 +7,16 @@
 		<h:outputStylesheet library="css" name="style.css" />
 	</h:head>
 	<h:body>
-		<h:form>
+		<h:form styleClass="hasiera-form">
 			<h1>Market JSF aplikazioa</h1>
-			<h3>Aukeratu ehin nahi duzuna:</h3>
-			<h:commandButton value="Eskaintza bat sortu" action="SortuEskaintza"/>
-			<h:commandButton value="Eskaitzak kontsultatu" action="IkusiEskaintzak"/>
-			<h:messages id="mezuak" style="color:red" />
+			<h3>Aukeratu egin nahi duzuna:</h3>
+			
+			<div class="botoiak">
+				<p:button styleClass="botoia" value="Eskaintza bat sortu" outcome="SortuEskaintza"/>
+				<p:button styleClass="botoia" value="Eskaitzak kontsultatu" outcome="IkusiEskaintzak"/>
+			</div>
+			<p:messages id="mezuak" styleClass="mezuak"/>
+			
 		</h:form>
 	</h:body>
 </f:view>
