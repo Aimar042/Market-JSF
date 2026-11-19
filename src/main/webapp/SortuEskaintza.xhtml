@@ -45,7 +45,8 @@
 					<p:outputLabel for="egoera" value="Egoera: " />
 					<p:selectOneMenu id="egoera" value="#{sortu.egoera}" >
 						<f:selectItem itemLabel="Berria" itemValue="BERRIA"/>
-						<f:selectItem itemLabel="Erabilia" itemValue="ERABILIA"/>
+						<f:selectItem itemLabel="Oso ona" itemValue="OSOONA"/>
+						<f:selectItem itemLabel="Egokia" itemValue="EGOKIA"/>
 						<f:selectItem itemLabel="Txarra" itemValue="TXARRA"/> 
 					</p:selectOneMenu>
 				</div>
@@ -73,6 +74,7 @@
 								  inline="true"
 								  required="true"
 								  requiredMessage="Eskaintzak argitarapen data bat eduki behar du"
+								  mindate="#{sortu.minDate}"
 					/>
 				</div>
 				

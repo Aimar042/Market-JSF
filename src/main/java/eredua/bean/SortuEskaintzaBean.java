@@ -29,29 +29,32 @@ public class SortuEskaintzaBean implements Serializable{
 	private String tituloa;
 	private String deskripzioa;
 	private Float prezioa;
+	private Date minDate;
 	
 	
-	public void sortuEskaintza() {
+	public String sortuEskaintza() {
 		int status = 0;;
 		switch (egoera) {
 		case "BERRIA":
 			status = 0;
 			break;
 			
-		case "ERABILIA":
+		case "OSOONA":
 			status = 1;
 			break;
 			
-		case "TXARRA":
+		case "EGOKIA":
 			status = 2;
+		
+		case "TXARRA":
+			status = 3;
 		}
 		
 		try {
 			facadeBL.createSale(tituloa, deskripzioa, status, prezioa, data, "seller1@gmail.com", targetFile);
 			FacesContext context = FacesContext.getCurrentInstance();
 			context.getExternalContext().getFlash().setKeepMessages(true);
-			context.addMessage(null, new FacesMessage("Eskaintza ondo sortu da!"));
-						
+			context.addMessage(null, new FacesMessage("Eskaintza ondo sortu da!"));	
 		} catch (ParamNullException e) {
 			FacesContext.getCurrentInstance().addMessage(null,
 					new FacesMessage(FacesMessage.SEVERITY_ERROR, "Balioak ezin dira hutsak izan, idatzi balio guztiak mesedez", null));
@@ -62,6 +65,8 @@ public class SortuEskaintzaBean implements Serializable{
 			FacesContext.getCurrentInstance().addMessage(null,
 					new FacesMessage(FacesMessage.SEVERITY_ERROR,"Eskaintza jadanik sortua dago",null));
 		}
+		
+		return "ok";
 	}
 	
 	public void kargatuIrudia() {
@@ -86,6 +91,10 @@ public class SortuEskaintzaBean implements Serializable{
 	public void handleFileUpload(FileUploadEvent event) {
 		this.file = event.getFile();
 		kargatuIrudia();
+	}
+	
+	public Date getMinDate() {
+		return new Date();
 	}
 	
 	public String getEgoera() {
