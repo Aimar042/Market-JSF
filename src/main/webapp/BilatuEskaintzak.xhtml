@@ -7,7 +7,13 @@
 		<h:outputStylesheet library="css" name="style.css" />
 	</h:head>
 	<h:body>
-		
+		<h:form styleClass="bilatu-form">
+			<h3>Eskaintzak bilatu</h3>
+			<div class="eremua">
+				<p:inputText id="bilatzailea" value="#{bilatu.eskaintzIzena}"/>
+				<p:commandButton id="bilatu-botoia" value="Bilatu"/>
+			</div>
+		</h:form>
 	</h:body>
 </f:view>
 </html>
