@@ -20,6 +20,31 @@ body {
 	margin-top: 4rem;
 }
 
+.bilatu-form {
+	display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    text-align: center;
+    gap: 1rem
+}
+
+.hasiera-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    text-align: center;
+}
+
+.hasiera-form .botoiak {
+    display: flex;
+    gap: 2rem;
+    margin-top: 1.5rem;
+}
+
 .eremuak-ezker, .eremuak-eskuin {
     display: flex;
     flex-direction: column;
@@ -61,28 +86,3 @@ body {
 .igo-botoia .ui-fileupload-content {
     display: none !important;
 }
-
-.hasiera-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    text-align: center;
-}
-
-.hasiera-form .botoiak {
-    display: flex;
-    gap: 2rem;
-    margin-top: 1.5rem;
-}
-
-.bilatu-form {
-	display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    text-align: center;
-}
-

@@ -20,6 +20,7 @@ import jakarta.inject.Named;
 @ViewScoped
 public class SortuEskaintzaBean implements Serializable{
 	
+	private static final long serialVersionUID = 1L;
 	private BLFacade facadeBL = FacadeBean.getBusinessLogic();
 	private String egoera = "BERRIA";
 	private UploadedFile file;
