@@ -23,6 +23,7 @@ public class BilatuEskaintzakBean implements Serializable {
 	
 	public String atzeraEgin() {
 		this.eskaintzak = null;
+		this.bilatua = false;
 		return "atzera";
 	}
 	
