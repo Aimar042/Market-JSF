@@ -21,6 +21,11 @@ public class BilatuEskaintzakBean implements Serializable {
 	private boolean bilatua = false;
 	private Sale aukeratutakoEskaintza;
 	
+	public String atzeraEgin() {
+		this.eskaintzak = null;
+		return "atzera";
+	}
+	
 	public void bilatu() {
 		eskaintzak = facadeBL.getSales(tituloa);
 		eskaintzaKop = eskaintzak.size();

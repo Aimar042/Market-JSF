@@ -12,6 +12,7 @@
 			<div class="eremua">
 				<p:inputText id="bilatzailea" value="#{bilatu.tituloa}"/>
 				<p:commandButton id="bilatu-botoia" value="Bilatu" action="#{bilatu.bilatu}" update="aurkitutakoa"/>
+				<p:button id="atzera-botoia" value="Atzera joan" action="#{bilatu.atzeraEgin()}"/>
 			</div>
 			
 			<div class="eremua">
@@ -42,7 +43,7 @@
 						</f:facet>
 					</p:dataTable>
 				</h:panelGroup>
-			</div>			
+			</div>
 		</h:form>
 	</h:body>
 </f:view>
